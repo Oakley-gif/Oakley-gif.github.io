@@ -1,0 +1,702 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>通信协议</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h2 id='一四种协议快速对比表'><span>一、四种协议快速对比表  </span></h2><p><span>校招面试中，常会直接问“对比一下 UART、I2C、SPI 和 CAN”，建议先记住下面这张对比表，再展开细节：</span></p><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>对比维度</span></th><th style='text-align:center;' ><span>UART</span></th><th style='text-align:center;' ><span>I2C</span></th><th style='text-align:center;' ><span>SPI</span></th><th style='text-align:center;' ><span>CAN</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>通信方式</span></td><td style='text-align:center;' ><span>异步</span></td><td style='text-align:center;' ><span>同步</span></td><td style='text-align:center;' ><span>同步</span></td><td style='text-align:center;' ><span>异步</span></td></tr><tr><td style='text-align:center;' ><span>工作模式</span></td><td style='text-align:center;' ><span>全双工</span></td><td style='text-align:center;' ><span>半双工</span></td><td style='text-align:center;' ><span>全双工</span></td><td style='text-align:center;' ><span>半双工</span></td></tr><tr><td style='text-align:center;' ><span>信号线数</span></td><td style='text-align:center;' ><span>2根（TX+RX）</span></td><td style='text-align:center;' ><span>2根（SDA+SCL）</span></td><td style='text-align:center;' ><span>4根（SCK+MOSI+MISO+CS）</span></td><td style='text-align:center;' ><span>2根差分线（CAN_H+CAN_L）</span></td></tr><tr><td style='text-align:center;' ><span>时钟线</span></td><td style='text-align:center;' ><span>无</span></td><td style='text-align:center;' ><span>有（SCL）</span></td><td style='text-align:center;' ><span>有（SCK）</span></td><td style='text-align:center;' ><span>无（位定时同步）</span></td></tr><tr><td style='text-align:center;' ><span>主从关系</span></td><td style='text-align:center;' ><span>无，点对点</span></td><td style='text-align:center;' ><span>多主多从，地址寻址</span></td><td style='text-align:center;' ><span>一主多从，片选</span></td><td style='text-align:center;' ><span>多主，ID优先级仲裁</span></td></tr><tr><td style='text-align:center;' ><span>典型速率</span></td><td style='text-align:center;' ><span>9600~115200 bps</span></td><td style='text-align:center;' ><span>100k/400k/3.4M bps</span></td><td style='text-align:center;' ><span>1~70 Mbps</span></td><td style='text-align:center;' ><span>≤1 Mbps（CAN FD更高）</span></td></tr><tr><td style='text-align:center;' ><span>传输距离</span></td><td style='text-align:center;' ><span>数米（TTL）~1200m（RS485）</span></td><td style='text-align:center;' ><span>板级，通常＜1m</span></td><td style='text-align:center;' ><span>板级，通常＜30cm</span></td><td style='text-align:center;' ><span>数十米~数公里</span></td></tr><tr><td style='text-align:center;' ><span>需要电平转换</span></td><td style='text-align:center;' ><span>需（TTL↔RS232/485）</span></td><td style='text-align:center;' ><span>通常无需</span></td><td style='text-align:center;' ><span>无需</span></td><td style='text-align:center;' ><span>需CAN收发器</span></td></tr></tbody></table></figure><ul><li><p><strong><span>波特率</span></strong><span>：单位时间内</span><strong><span>传输的符号（码元）个数</span></strong><span>，单位 </span><strong><span>Baud</span></strong><span>。</span></p></li><li><p><strong><span>比特率</span></strong><span>：单位时间内</span><strong><span>传输的比特（二进制位）个数</span></strong><span>，单位 </span><strong><span>bps</span></strong><span>（比特每秒）。</span></p></li><li><blockquote><p><strong><span>比特率 = 波特率 × 每个符号携带的比特数</span></strong></p></blockquote><p><span>其中“每个符号携带的比特数”取决于调制方式（或编码方式）。</span>
+<span>如果用二进制调制（一个符号只有0和1两种状态），则一个符号=1比特，此时</span><strong><span>波特率 = 比特率</span></strong><span>。</span>
+<span>如果使用更高阶调制（如QPSK、8QAM等），一个符号可以代表多个比特，此时</span><strong><span>比特率 &gt; 波特率</span></strong><span>。</span></p></li></ul><h2 id='二uart通用异步收发器'><span>二、UART（通用异步收发器）</span></h2><h4 id='universal-asynchronous-receivertransmitter'><strong><span>Universal Asynchronous Receiver/Transmitter</span></strong></h4><h3 id='1-协议内容'><span>1. 协议内容</span></h3><p><span>UART 是一种</span><strong><span>异步、全双工、点对点</span></strong><span>的串行通信协议。由于没有共享时钟线，收发双方必须</span><strong><span>预先约定相同的波特率和帧格式</span></strong><span>才能正确通信。</span></p><p><strong><span>物理连接</span></strong><span>：只需两根信号线——TXD（发送）和 RXD（接收），通信时需交叉连接（本机的 TX 接对方的 RX，反之亦然）。</span></p><p><strong><span>帧格式</span></strong><span>：一个完整的 UART 数据帧包含：</span></p><ul><li><p><strong><span>起始位</span></strong><span>：1 位，逻辑 0，标志传输开始</span></p></li><li><p><strong><span>数据位</span></strong><span>：5~9 位（最常见 8 位），LSB 先发</span></p></li><li><p><strong><span>校验位</span></strong><span>：可选，奇校验/偶校验，用于错误检测</span></p></li><li><p><strong><span>停止位</span></strong><span>：1~2 位，逻辑 1，标志传输结束</span></p></li></ul><p><span>空闲时总线保持高电平。当检测到起始位（高→低跳变）时，接收方开始按约定波特率采样数据。</span></p><p><strong><span>核心参数</span></strong><span>：波特率（Baud Rate），表示每秒传输的二进制位数。常见值有 9600、115200。收发双方波特率误差超过约 3% 会导致通信失败。</span></p><p><strong><span>电气层变体</span></strong><span>：UART 只定义了协议层，实际应用中需配合电平标准：</span></p><ul><li><p><strong><span>TTL/CMOS</span></strong><span>：逻辑 1≈VCC（3.3V/5V），逻辑 0≈0V，板内短距离通信</span></p></li><li><p><strong><span>RS-232</span></strong><span>：逻辑 1 为 -3V~-15V，逻辑 0 为 +3V~+15V，适用于 PC 串口，需 MAX232 电平转换</span></p></li><li><p><strong><span>RS-485</span></strong><span>：差分信号传输，抗干扰能力强，支持多点通信（最多 32/256 节点），传输距离可达 1200 米</span></p></li></ul><h3 id='2-优缺点'><span>2. 优缺点</span></h3><p><strong><span>优点</span></strong><span>：</span></p><ul><li><p><span>协议简单，硬件实现容易，几乎所有 MCU 都内置 UART 外设</span></p></li><li><p><span>全双工，可同时收发</span></p></li><li><p><span>只需两根线，引脚占用极少</span></p></li><li><p><span>配合 RS-485 可实现长距离多节点通信</span></p></li></ul><p><strong><span>缺点</span></strong><span>：</span></p><ul><li><p><span>速度较慢，通常 ≤115200 bps（高速 UART 可达数 Mbps 但较少用）</span></p></li><li><p><span>异步通信，双方波特率必须严格匹配，否则乱码</span></p></li><li><p><span>仅支持点对点（除非配合 RS-485 等总线物理层）MOBUS</span></p></li><li><p><span>无硬件流控时，接收方处理不过来会导致丢包</span></p></li></ul><h3 id='3-应用场景'><span>3. 应用场景</span></h3><ul><li><p><span>PC 与单片机调试通信（通过 USB 转串口）</span></p></li><li><p><span>GPS 模块、蓝牙模块、WiFi 模块等外设通信</span></p></li><li><p><span>工业现场总线（配合 RS-485）</span></p></li><li><p><span>嵌入式系统日志输出（printf 重定向到串口）</span></p></li></ul><h2 id='三i2c集成电路总线'><span>三、I2C（集成电路总线）</span></h2><h3 id='1-协议内容-2'><span>1. 协议内容</span></h3><p><span>I2C（Inter-Integrated Circuit，也称 IIC）是一种</span><strong><span>同步、半双工、多主多从</span></strong><span>的串行总线，由飞利浦公司（现 NXP）开发。仅需两根信号线：</span></p><ul><li><p><strong><span>SDA</span></strong><span>：串行数据线（双向）</span></p></li><li><p><strong><span>SCL</span></strong><span>：串行时钟线（由</span><strong><span>主机</span></strong><span>产生）</span></p></li></ul><p><span>两根线均采用</span><strong><span>开漏输出</span></strong><span>结构，因此</span><strong><span>必须外接上拉电阻</span></strong><span>（典型值 2.2kΩ~10kΩ）才能输出高电平。开漏设计使得总线支持“线与”逻辑，便于实现多主仲裁和时钟拉伸。</span></p><p><img src="C:\Users\刘树澎\Desktop\杂项\Markdown\通信协议.assets\{8F087A90-8010-448C-A293-D07AFC72C3A2}.png" style="zoom:33%;" /></p><p><span>线与特性：只要有一个设备将总线拉低（输出低电平），总线就呈现</span><strong><span>低电平</span></strong><span>；</span>
+<span>只有当</span><strong><span>所有设备都释放总线</span></strong><span>（输出高阻态），总线才会被上拉电阻拉成</span><strong><span>高电平</span></strong><span>。</span></p><p><strong><span>关键时序</span></strong><span>：</span></p><ul><li><p><strong><span>起始条件</span></strong><span>：SCL 为高电平时，SDA 由高→低跳变</span></p></li><li><p><strong><span>停止条件</span></strong><span>：SCL 为高电平时，SDA 由低→高跳变</span></p></li><li><p><strong><span>数据有效性</span></strong><span>：SCL 高电平期间 SDA 必须保持稳定；SDA 只能在 SCL 为低电平时改变</span></p></li><li><p><strong><span>应答（ACK/NACK）</span></strong><span>：每传完 8 位数据，第 9 个时钟周期由接收方拉低 SDA 表示应答</span></p></li></ul><p><strong><span>通信格式</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51786px; left: 7.99106px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">起始位 | 从机地址（7位）+ 读写位（1位）| ACK | 寄存器地址 | ACK | 数据 | ACK/NACK | 停止位</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>其中读写位：0 = 主机写，1 = 主机读。7 位地址模式下，一条总线最多可挂 127 个设备。</span></p><p><strong><span>速率标准</span></strong><span>：标准模式 100kbps、快速模式 400kbps、快速+模式 1Mbps、高速模式 3.4Mbps。</span></p><p><strong><span>多主仲裁</span></strong><span>：当多个主机同时启动通信时，通过检测 SDA 电平进行仲裁。仲裁在地址段进行，谁先输出低电平谁赢得总线（地址小的优先级高），且仲裁不破坏数据。</span></p><p><span>I2C总线上可以挂多个“主机”（比如多个单片机都想发数据）。为了防止它们同时说话造成冲突，I2C用了一个很聪明的办法：</span><strong><span>谁发“0”谁赢，发“1”的自动退让</span></strong><span>。</span></p><p><span>具体来说，I2C的线路设计成“线与”——只要任何一个主机把线路拉低（发0），整条线就是低电平；只有当所有主机都不拉低（都想发1）时，线路才会被电阻拉回高电平。所以当多个主机同时发送数据时，它们会一位一位地比较：如果某个主机想发1（高电平），但检测到线路上实际是0（说明有别的主机在发0），那它就知道自己输了，立刻乖乖退出，不再干扰赢家。而赢家（发0的那个）可以继续发完剩下的数据。</span></p><p><span>整个过程由硬件自动完成，</span><strong><span>不会丢失数据，也不需要事先商量</span></strong><span>，就像一群人都想说话，但规则是“谁先压低声音（0）谁就说，想抬高声音（1）的听到别人更低就闭嘴”——简单又可靠。</span></p><h3 id='2-优缺点-2'><span>2. 优缺点</span></h3><p><strong><span>优点</span></strong><span>：</span></p><ul><li><p><span>仅需两根线，引脚占用极少，硬件实现简单</span></p></li><li><p><span>支持多主多从架构，最多 127 个设备共享同一总线</span></p></li><li><p><span>有完善的仲裁机制和应答机制，通信可靠</span></p></li><li><p><span>支持时钟拉伸，慢速从设备可拉低 SCL 让主机等待</span></p></li></ul><p><strong><span>缺点</span></strong><span>：</span></p><ul><li><p><span>速率相对较慢（标准 100kbps，最高 3.4Mbps）</span></p></li><li><p><span>半双工，同一时刻只能单向传输</span></p></li><li><p><span>传输距离短（标准模式下约 1 米）</span></p></li><li><p><span>总线上拉电阻需根据总线电容精心选择</span></p></li><li><p><span>总线被拉死时排查困难（某设备一直拉低 SDA）</span></p></li></ul><h3 id='3-应用场景-2'><span>3. 应用场景</span></h3><ul><li><p><span>各类传感器（温度、湿度、加速度、陀螺仪等）</span></p></li><li><p><span>EEPROM、FRAM 等非易失性存储器</span></p></li><li><p><span>RTC 实时时钟芯片</span></p></li><li><p><span>电源管理芯片（PMIC）配置</span></p></li><li><p><span>触摸屏、显示屏的配置接口</span></p></li></ul><h2 id='四spi串行外设接口'><span>四、SPI（串行外设接口）</span></h2><h3 id='1-协议内容-3'><span>1. 协议内容</span></h3><p><span>SPI（Serial Peripheral Interface）是一种</span><strong><span>同步、全双工、高速</span></strong><span>的串行通信总线，由 Motorola 推出。采用</span><strong><span>一主多从</span></strong><span>架构。</span></p><p><strong><span>信号线</span></strong><span>（标准 4 线制）：</span></p><ul><li><p><strong><span>SCK</span></strong><span>：串行时钟，由主机产生</span></p></li><li><p><strong><span>MOSI</span></strong><span>：主机输出、从机输入（Master Out Slave In）</span></p></li><li><p><strong><span>MISO</span></strong><span>：主机输入、从机输出（Master In Slave Out）</span></p></li><li><p><strong><span>CS/SS</span></strong><span>：片选信号（Chip Select / Slave Select），低电平有效，主机通过拉低不同从机的 CS 线来选择通信对象</span></p></li></ul><p><strong><span>数据交换机制</span></strong><span>：主机和从机内部都有一个移位寄存器，在 SCK 的每个时钟周期，主机通过 MOSI 发送一位数据，同时通过 MISO 接收一位数据。发送完一个字节后，双方寄存器内容完成交换。</span></p><p><strong><span>四种工作模式</span></strong><span>（由 CPOL 和 CPHA 两个参数组合决定）：</span></p><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>模式</span></th><th style='text-align:center;' ><span>CPOL（时钟极性）</span></th><th style='text-align:center;' ><span>CPHA（时钟相位）</span></th><th style='text-align:center;' ><span>空闲时钟电平</span></th><th style='text-align:center;' ><span>采样时刻</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>低电平</span></td><td style='text-align:center;' ><span>上升沿</span></td></tr><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>低电平</span></td><td style='text-align:center;' ><span>下降沿</span></td></tr><tr><td style='text-align:center;' ><span>2</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>高电平</span></td><td style='text-align:center;' ><span>下降沿</span></td></tr><tr><td style='text-align:center;' ><span>3</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>高电平</span></td><td style='text-align:center;' ><span>上升沿</span></td></tr></tbody></table></figure><p><span>主从双方</span><strong><span>必须使用相同模式</span></strong><span>，否则数据错位。模式 0 和模式 3 最常用，因为它们都在</span><strong><span>上升沿采样数据</span></strong><span>。</span></p><p><span>SPI 没有标准协议层，数据格式（位宽、MSB/LSB 先行）由具体器件决定，非常灵活。</span></p><h3 id='2-优缺点-3'><span>2. 优缺点</span></h3><p><strong><span>优点</span></strong><span>：</span></p><ul><li><p><span>全双工，可同时收发数据</span></p></li><li><p><span>速率极高（可达几十 MHz，远超 I2C）</span></p></li><li><p><span>协议简单，无需设备地址，无应答机制</span></p></li><li><p><span>推挽输出，无需上拉电阻，信号质量好，功耗低</span></p></li></ul><p><strong><span>缺点</span></strong><span>：</span></p><ul><li><p><span>每个从机需要一根独立的 CS 线，多设备时引脚占用多</span></p></li><li><p><span>无标准协议层，不同器件的时序要求可能不同</span></p></li><li><p><span>无应答机制，主机无法确认从机是否正确接收</span></p></li><li><p><span>传输距离短，通常仅适用于板内通信</span></p></li><li><p><span>无仲裁机制，同一时刻只能有一个主机</span></p></li></ul><h3 id='3-应用场景-3'><span>3. 应用场景</span></h3><ul><li><p><span>Flash 存储器（SPI NOR Flash、SPI NAND Flash）</span></p></li><li><p><span>SD 卡（SPI 模式）</span></p></li><li><p><span>LCD/OLED 显示屏</span></p></li><li><p><span>高速 ADC/DAC</span></p></li><li><p><span>射频模块、移位寄存器</span></p></li></ul><h2 id='五can控制器局域网络'><span>五、CAN（控制器局域网络）</span></h2><h3 id='1-协议内容-4'><span>1. 协议内容</span></h3><p><span>CAN（Controller Area Network）是一种</span><strong><span>多主、异步、高可靠性</span></strong><span>的串行总线，由 Bosch 公司为汽车电子系统开发，后成为国际标准（ISO 11898）。与前三者最大的区别在于：</span><strong><span>CAN 专为工业级可靠性和实时性设计</span></strong><span>。</span></p><p><strong><span>物理层</span></strong><span>：使用</span><strong><span>差分信号</span></strong><span>传输，两根信号线为 CAN_H 和 CAN_L。通过两根线的电压差表示逻辑电平：</span></p><ul><li><p><strong><span>显性电平（逻辑 0）</span></strong><span> ：CAN_H - CAN_L ≈ 2V</span></p></li><li><p><strong><span>隐性电平（逻辑 1）</span></strong><span> ：CAN_H - CAN_L ≈ 0V</span></p></li></ul><p><span>显性电平可覆盖隐性电平（“线与”逻辑），这是仲裁机制的物理基础。</span></p><p><span>在CAN总线通信中，显性电平（逻辑0）之所以能覆盖隐性电平（逻辑1），是因为显性电平是靠收发器“主动用力驱动”总线产生的，而隐性电平只是所有收发器都“松开手”、靠电阻轻轻拉回的状态。这就好比一扇门：只要有人用力推（显性），门就会被推开；只有当所有人都松手（隐性），门才会靠弹簧自己关上。因此，只要总线上有一个节点发送显性位，整个总线就会被强制拉成显性状态，而隐性位只有在所有节点都不输出显性时才能体现出来。</span></p><p><span>差分传输具有很强的抗共模干扰能力，适合恶劣电磁环境。</span></p><p><strong><span>总线仲裁</span></strong><span>：CAN 采用</span><strong><span>非破坏性逐位仲裁机制</span></strong><span>。每个节点在发送数据时同时监听总线：</span></p><ul><li><p><span>如果监听到的电平与自己发送的一致，继续发送</span></p></li><li><p><span>如果不一致，说明有更高优先级的节点在发送，该节点自动退出发送，转为接收模式</span></p></li></ul><p><span>仲裁在</span><strong><span>帧 ID 段</span></strong><span>进行，</span><strong><span>ID 值越小，优先级越高</span></strong><span>。这种机制不破坏正在传输的数据，保证了高优先级消息的实时性。</span></p><p><strong><span>帧格式</span></strong><span>：CAN 2.0 规范定义了以下帧类型：</span></p><ul><li><p><strong><span>数据帧</span></strong><span>：传输实际数据，分为标准帧（11 位 ID）和扩展帧（29 位 ID）</span></p></li><li><p><strong><span>远程帧</span></strong><span>：请求发送具有相同 ID 的数据</span></p></li><li><p><strong><span>错误帧</span></strong><span>：检测到错误时发送</span></p></li><li><p><strong><span>过载帧</span></strong><span>：请求延迟下一次发送</span></p></li><li><p><strong><span>帧间隔</span></strong><span>：分隔前后两个帧</span></p></li></ul><p><span>数据帧包含：帧起始 + 仲裁场（ID + RTR）+ 控制场 + 数据场（0~8 字节）+ CRC 场 + 应答场 + 帧结束。</span></p><p><strong><span>短帧结构</span></strong><span>：一个数据帧最多携带 8 字节数据，这使得发送和接收时间短、被干扰的概率小，保证了高实时性和抗干扰能力。</span></p><p><strong><span>错误处理</span></strong><span>：CAN 内置完善的错误检测机制（位错误、CRC 错误、格式错误、应答错误、位填充错误），并支持错误计数和自动总线关闭功能。</span></p><h3 id='2-优缺点-4'><span>2. 优缺点</span></h3><p><strong><span>优点</span></strong><span>：</span></p><ul><li><p><span>差分信号 + 短帧结构，抗干扰能力极强</span></p></li><li><p><span>多主架构，任意节点可主动发送</span></p></li><li><p><span>非破坏性仲裁，高优先级消息实时性有保障</span></p></li><li><p><span>完善的错误检测和故障隔离机制</span></p></li><li><p><span>节点可热插拔，扩展性好</span></p></li><li><p><span>传输距离远（低速模式下可达数公里）</span></p></li></ul><p><strong><span>缺点</span></strong><span>：</span></p><ul><li><p><span>数据吞吐量有限（经典 CAN 最高 1 Mbps，单帧 ≤8 字节）</span></p></li><li><p><span>协议复杂，需专用 CAN 控制器和收发器</span></p></li><li><p><span>相对 UART/SPI/I2C 成本较高</span></p></li><li><p><span>缺乏内置安全加密功能</span></p></li></ul><p><strong><span>CAN FD 升级</span></strong><span>：CAN FD（Flexible Data-rate）将数据段速率提升至 5~8 Mbps，数据场扩容至 64 字节，向下兼容经典 CAN。</span></p><h3 id='3-应用场景-4'><span>3. 应用场景</span></h3><ul><li><p><strong><span>汽车电子</span></strong><span>：发动机控制、变速箱控制、ABS 刹车系统、车身电子、仪表盘、空调系统</span></p></li><li><p><strong><span>工业自动化</span></strong><span>：PLC 通信、伺服控制、现场总线</span></p></li><li><p><strong><span>医疗设备</span></strong><span>：手术机器人、监护仪、诊断设备</span></p></li><li><p><strong><span>航空航天</span></strong><span>：飞行控制系统</span></p></li></ul><h2 id='六校招面试高频考点汇总'><span>六、校招面试高频考点汇总</span></h2><p><span>以下是校招面试中关于这四种协议的最高频问题，建议逐条掌握：</span></p><h3 id='一uart-高频考点'><span>（一）UART 高频考点</span></h3><p><strong><span>Q1：UART 的帧格式是什么？空闲时总线电平状态？</span></strong></p><p><span>答：起始位（1 位逻辑 0）+ 数据位（5~9 位）+ 校验位（可选）+ 停止位（1~2 位逻辑 1）。空闲时 TX 和 RX 线均保持高电平。接收方检测到下降沿（起始位）后开始按约定波特率采样数据。</span></p><p><strong><span>Q2：波特率是什么？波特率误差多大会导致通信失败？</span></strong></p><p><span>答：波特率表示每秒传输的二进制位数（bps）。收发双方波特率误差一般需控制在 </span><strong><span>&lt; 3%</span></strong><span>，否则采样点漂移累积会导致数据误判。设计晶振时优先选择能使分频系数为整数的频率（如 115200 bps 用 11.0592 MHz 晶振误差为 0%）。</span></p><p><strong><span>Q3：TTL、RS-232、RS-485 三者的区别？分别适用什么场景？</span></strong></p><p><span>答：见下表：</span></p><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>电平标准</span></th><th style='text-align:center;' ><span>逻辑 1 电平</span></th><th style='text-align:center;' ><span>逻辑 0 电平</span></th><th style='text-align:left;' ><span>特点</span></th><th style='text-align:left;' ><span>应用场景</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>TTL</span></td><td style='text-align:center;' ><span>3.3V/5V</span></td><td style='text-align:center;' ><span>0V</span></td><td style='text-align:left;' ><span>板内短距</span></td><td style='text-align:left;' ><span>MCU 直连</span></td></tr><tr><td style='text-align:center;' ><span>RS-232</span></td><td style='text-align:center;' ><span>-3V~-15V</span></td><td style='text-align:center;' ><span>+3V~+15V</span></td><td style='text-align:left;' ><span>点对点</span></td><td style='text-align:left;' ><span>PC 串口</span></td></tr><tr><td style='text-align:center;' ><span>RS-485</span></td><td style='text-align:center;' ><span>差分（A&gt;B）</span></td><td style='text-align:center;' ><span>差分（A&lt;B）</span></td><td style='text-align:left;' ><span>多节点、长距离</span></td><td style='text-align:left;' ><span>工业现场总线</span></td></tr></tbody></table></figure><p><span>TTL 直接接 RS-232 会烧坏 MCU 引脚，需使用 MAX232 等电平转换芯片。</span></p><p><strong><span>Q4：UART 丢包/乱码如何排查？</span></strong></p><p><span>答：软件方面——检查波特率配置是否一致、校验位/停止位设置是否匹配、中断/轮询接收方式是否合理；硬件方面——确认 RX/TX 是否正确交叉连接、是否存在电平不匹配问题、晶振频率是否导致波特率误差超标。</span></p><h3 id='二i2c-高频考点'><span>（二）I2C 高频考点</span></h3><p><strong><span>Q5：I2C 为什么必须加上拉电阻？上拉电阻选多大？</span></strong></p><p><span>答：I2C 的 SDA 和 SCL 为</span><strong><span>开漏输出</span></strong><span>，只能输出低电平，无法主动输出高电平。因此必须外接上拉电阻来提供高电平。开漏设计的好处是支持“线与”逻辑，便于多主仲裁和时钟拉伸，同时避免多设备同时输出时短路。上拉电阻典型值 </span><strong><span>2.2kΩ~10kΩ</span></strong><span>，具体取决于总线电容负载和通信速率。</span></p><p><strong><span>Q6：I2C 起始条件和停止条件如何区分？</span></strong></p><p><span>答：</span></p><ul><li><p><strong><span>起始条件</span></strong><span>：SCL 为高电平时，SDA 由高→低跳变</span></p></li><li><p><strong><span>停止条件</span></strong><span>：SCL 为高电平时，SDA 由低→高跳变</span>
+<span>起始和停止条件均由主机发出。</span></p></li></ul><p><strong><span>Q7：I2C 多主仲裁是如何实现的？</span></strong></p><p><span>答：多个主机同时启动通信时，在发送地址段的同时监听 SDA 线。如果某主机发送隐性电平（高）但监测到 SDA 为低，说明有其他主机在发送显性电平，该主机自动退出发送。仲裁不破坏数据，仲裁失败的节点自动转为从机模式。</span></p><p><strong><span>Q8：I2C 通信挂死（总线一直被拉低）如何排查？</span></strong></p><p><span>答：软件方面——检查是否正常发送了停止条件、ACK/NACK 处理是否正确；硬件方面——用示波器/逻辑分析仪查看 SDA/SCL 波形，逐级断开从设备定位哪个设备在拉低总线，检查上拉电阻是否虚焊或阻值过大。</span></p><p><strong><span>Q9：I2C 一个总线上最多能挂多少个设备？</span></strong></p><p><span>答：7 位地址模式下最多 127 个（排除保留地址 0x00），但实际数量受限于总线电容负载（总负载电容 ≤400 pF）和上拉电阻驱动能力。</span></p><p><strong><span>Q10：I2C 地址写和读的格式有何不同？</span></strong></p><p><span>答：写操作：起始 + 从机地址（7 位）+ 写位（0）+ ACK + 寄存器地址 + ACK + 数据 + ACK + 停止。读操作：起始 + 从机地址 + 写位（0）+ ACK + 寄存器地址 + ACK + 重复起始 + 从机地址 + 读位（1）+ ACK + 读取数据 + NACK + 停止。</span></p><h3 id='三spi-高频考点'><span>（三）SPI 高频考点</span></h3><p><strong><span>Q11：SPI 四种工作模式的区别？分别由什么参数决定？</span></strong></p><p><span>答：由 </span><strong><span>CPOL（时钟极性）</span></strong><span> 和 </span><strong><span>CPHA（时钟相位）</span></strong><span> 两个参数组合决定：</span></p><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>模式</span></th><th style='text-align:center;' ><span>CPOL</span></th><th style='text-align:center;' ><span>CPHA</span></th><th style='text-align:center;' ><span>空闲时钟</span></th><th style='text-align:center;' ><span>采样沿</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>低</span></td><td style='text-align:center;' ><span>上升沿</span></td></tr><tr><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>低</span></td><td style='text-align:center;' ><span>下降沿</span></td></tr><tr><td style='text-align:center;' ><span>2</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>0</span></td><td style='text-align:center;' ><span>高</span></td><td style='text-align:center;' ><span>下降沿</span></td></tr><tr><td style='text-align:center;' ><span>3</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>高</span></td><td style='text-align:center;' ><span>上升沿</span></td></tr></tbody></table></figure><p><span>主从双方必须使用相同模式，模式 0 和 3 最常用（均在上升沿采样）。</span></p><p><strong><span>Q12：SPI 如何实现一主多从？</span></strong></p><p><span>答：主机通过</span><strong><span>多条独立的 CS（片选）线</span></strong><span>连接各个从机。需要与哪个从机通信，就拉低对应的 CS 线，其他从机 CS 保持高电平。同一时刻只能有一个从机被选中。</span></p><p><strong><span>Q13：SPI 的数据交换机制是怎样的？</span></strong></p><p><span>答：主机和从机内部各有一个移位寄存器，在 SCK 的每个时钟周期，主机通过 MOSI 发送一位数据的同时，通过 MISO 接收一位从机的数据，两个移位寄存器形成闭环。发送一个字节后，双方寄存器内容完成交换。</span></p><p><strong><span>Q14：软件 SPI 和硬件 SPI 有什么区别？</span></strong></p><p><span>答：软件 SPI 通过 GPIO 手动模拟时序，任意引脚可用但速率受限（通常几十 kHz~几百 kHz），且易受中断干扰；硬件 SPI 由 MCU 内置 SPI 外设完成，速率高（可达几十 MHz），支持 DMA，时序稳定。面试中应说明两种方式的优缺点并举例适用场景。</span></p><p><strong><span>Q15：SPI 和 I2C 如何选择？</span></strong></p><p><span>答：需高速传输、全双工通信时选 SPI（如 Flash、显示屏）；引脚资源紧张、需要连接多个低速设备时选 I2C（如多传感器）。I2C 仅需 2 根线即可连接多个设备，SPI 则需要为每个从机提供独立 CS 线。</span></p><h3 id='四can-高频考点'><span>（四）CAN 高频考点</span></h3><p><strong><span>Q16：CAN 总线的显性电平和隐性电平分别代表什么逻辑？</span></strong></p><p><span>答：显性电平（逻辑 0）：CAN_H - CAN_L ≈ 2V；隐性电平（逻辑 1）：CAN_H - CAN_L ≈ 0V。显性电平可覆盖隐性电平（线与逻辑），这是仲裁机制的物理基础。</span></p><p><strong><span>Q17：CAN 总线如何实现仲裁？为什么说 CAN 的仲裁是非破坏性的？</span></strong></p><p><span>答：CAN 采用逐位仲裁机制。每个节点发送数据的同时监听总线，若监听到的电平与自己发送的不一致，说明有更高优先级的节点在发送，该节点立即停止发送并转为接收模式。仲裁在帧 ID 段进行，</span><strong><span>ID 值越小，优先级越高</span></strong><span>。“非破坏性”指仲裁失败的节点不会破坏正在传输的数据，且高优先级消息无需重传即可直接发送。</span></p><p><strong><span>Q18：CAN 的数据帧最多能传输多少字节数据？为什么这样设计？</span></strong></p><p><span>答：经典 CAN 数据帧最多传输 </span><strong><span>8 字节</span></strong><span>，CAN FD 可扩展到 64 字节。短帧结构使得发送和接收时间短、被干扰的概率小、实时性高，非常适合汽车和工业控制等对实时性和可靠性要求苛刻的应用场景。</span></p><p><strong><span>Q19：CAN 有哪些错误检测机制？</span></strong></p><p><span>答：CAN 内置五种错误检测机制：</span><strong><span>位错误</span></strong><span>（发送时监测总线电平与预期是否一致）、</span><strong><span>CRC 错误</span></strong><span>、</span><strong><span>格式错误</span></strong><span>、</span><strong><span>应答错误</span></strong><span>（ACK 位未收到应答）、</span><strong><span>位填充错误</span></strong><span>（连续 5 个相同极性位后未插入反型位）。节点通过错误计数器进行故障隔离，错误过多时自动退出总线。</span></p><p><strong><span>Q20：CAN 总线两端为什么要加终端电阻？阻值是多少？</span></strong></p><p><span>答：终端电阻用于消除信号反射，保证总线阻抗匹配。CAN 总线标准规定两端各接 </span><strong><span>120Ω</span></strong><span> 终端电阻（共模阻抗 60Ω）。高速 CAN（ISO 11898-2）必须加，低速容错 CAN 可内置。不加终端电阻会导致信号反射，波形畸变，通信不稳定。</span></p><h3 id='五综合对比类高频考点'><span>（五）综合对比类高频考点</span></h3><p><strong><span>Q21：UART、I2C、SPI、CAN 四者的最大区别是什么？如何选择？</span></strong></p><p><span>答：</span></p><ul><li><p><strong><span>点对点、低速调试</span></strong><span> → 选 UART</span></p></li><li><p><strong><span>板内多设备、引脚紧张</span></strong><span> → 选 I2C</span></p></li><li><p><strong><span>板内高速通信、外设数据量大</span></strong><span> → 选 SPI</span></p></li><li><p><strong><span>工业/汽车级高可靠性、长距离多节点</span></strong><span> → 选 CAN</span></p></li></ul><p><strong><span>Q22：哪些是同步通信，哪些是异步通信？有什么区别？</span></strong></p><p><span>答：同步通信（I2C、SPI）需要时钟线来同步数据传输，速率更高、时序更精确；异步通信（UART、CAN）无共享时钟，依赖预先约定的速率（UART）或位定时同步（CAN），更适合长距离传输。</span></p><p><strong><span>Q23：I2C 的时钟拉伸（Clock Stretching）是什么？有什么作用？</span></strong></p><p><span>答：当从设备来不及处理数据时，可以将 SCL 线拉低，迫使主机等待。主机检测到 SCL 被拉低后会暂停发送时钟，直到从设备释放 SCL 才继续。这使慢速从设备也能与高速主机通信，是 I2C 的重要流控机制。</span></p><p><strong><span>Q24：SPI 为什么不需要上拉电阻，而 I2C 需要？</span></strong></p><p><span>答：SPI 信号线为推挽输出，可主动输出高电平，因此无需上拉电阻；I2C 为开漏输出，只能输出低电平，需要外接上拉电阻来提供高电平，同时也方便实现多主仲裁和线与逻辑。推挽输出的 SPI 在高速传输时信号完整性更好。</span></p><h2 id='七备考建议'><span>七、备考建议</span></h2><ol start='' ><li><p><strong><span>动手实践</span></strong><span>：用示波器/逻辑分析仪实际抓取 UART、I2C、SPI 的波形，对照时序图理解，面试时能说出“我看到过这个波形”非常加分。</span></p></li><li><p><strong><span>画时序图</span></strong><span>：面试官常要求手画 I2C 的起始/停止条件或 SPI 的四种模式时序，建议提前练习。</span></p></li><li><p><strong><span>结合项目</span></strong><span>：准备 1~2 个自己项目中实际用过的协议案例，能说清为什么选这个协议、遇到什么问题、如何解决的。面试官更看重你解决问题的能力。</span></p></li><li><p><strong><span>多看面经</span></strong><span>：牛客网、CSDN 上大量嵌入式硬件校招面经，建议至少刷 50 道通信协议相关题目，建立“题目→答案”的条件反射。</span></p></li><li><p><strong><span>拓展知识</span></strong><span>：有精力的话可以了解一下 CAN FD（CAN 的升级版）、RS-422、I2S（音频接口）、LIN（汽车低速总线）等，作为加分项。</span></p></li></ol></div></div>
+</body>
+</html>
