@@ -1,49 +1,245 @@
+
 <!DOCTYPE html>
-<html>
-</head>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
-    <title>我的笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>我的笔记 | 知识库</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #f5f5f5;
+            background: #f5f7fb;
+            padding: 32px 20px;
+            color: #1e293b;
         }
-        h1 {
-            color: #333;
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        /* 头部 */
+        .header {
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #1e293b, #2d3a4e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+            display: inline-block;
             border-left: 4px solid #3b82f6;
-            padding-left: 15px;
+            padding-left: 18px;
+            margin-bottom: 8px;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
+
+       
+
+        /* 分类卡片 */
+        .category {
             background: white;
-            边距: 10像素 0;
-            padding: 15px;
-            圆角: 8像素;
-            阴影: 0 1像素 3像素 rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+            margin-bottom: 28px;
+            overflow: hidden;
+            transition: all 0.2s ease;
         }
-        a {
+
+        .category-header {
+            padding: 18px 24px 12px 24px;
+            border-bottom: 2px solid #eef2f6;
+            background: #ffffff;
+        }
+
+        .category-header h2 {
+            font-size: 22px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #0f172a;
+        }
+
+    
+
+        .note-list {
+            padding: 8px 8px 16px 8px;
+            background: #fefefe;
+        }
+
+        /* 笔记条目 */
+        .note-item {
+            margin: 8px 12px;
+            border-radius: 14px;
+            background: #ffffff;
+            transition: background 0.2s, transform 0.1s;
+            border: 1px solid #edf2f7;
+        }
+
+        .note-item:hover {
+            background: #fafcff;
+            border-color: #cbdff2;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .note-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
             text-decoration: none;
-            color: #3b82f6;
-            font-size: 18px;
+            color: #1e293b;
             font-weight: 500;
+            font-size: 16px;
         }
-        a:hover {
-            text-decoration: underline;
+
+        .note-icon {
+            font-size: 24px;
+            width: 36px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .note-title {
+            flex: 1;
+            letter-spacing: -0.2px;
+        }
+
+        .note-arrow {
+            color: #94a3b8;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+
+        .note-item:hover .note-arrow {
+            transform: translateX(3px);
+            color: #3b82f6;
+        }
+
+        /* 占位提示 (如果以后新增文件但暂时没有) 保持干净，但我不添加虚拟文件，只显示已有条目 */
+        .empty-tip {
+            padding: 20px 24px;
+            color: #7c8ba0;
+            font-size: 14px;
+            font-style: italic;
+            background: #fafcff;
+            border-radius: 14px;
+            margin: 8px 12px;
+            border: 1px dashed #dce5f0;
+            text-align: center;
+        }
+
+        hr {
+            margin: 8px 20px;
+            border: none;
+            border-top: 1px solid #ecf3f9;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #7c8ba0;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 24px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 16px;
+            }
+            .category-header {
+                padding: 14px 18px 10px 18px;
+            }
+            .note-link {
+                padding: 12px 16px;
+                gap: 10px;
+            }
+            .note-icon {
+                font-size: 22px;
+                width: 32px;
+            }
+            .header h1 {
+                font-size: 26px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>📚 目录</h1>
-    <ul>
-        <li><a href="UART IIC SPI CAN.html">UART IIC SPI CAN</a></li>
-        <li><a href="FreeRTOS.html">FreeRTOS</a></li>
-        <!-- 继续添加你的其他笔记 -->
-    </ul>
+<div class="container">
+    <div class="header">
+        <h1>📘 我的笔记</h1>
+    </div>
+
+    <!-- 电路与电子期末速成 分区 -->
+    <div class="category">
+        <div class="category-header">
+            <h2>
+                ⚡ 电路与电子期末速成
+            </h2>
+        </div>
+        <div class="note-list">
+            <!-- 电路与电子期末速成 下的 html 文件：第1章 电路基础.html  
+                 根据实际文件名 —— 你之前提供的笔记内容为“第1章 电路基础”，且目录中存在该文件 
+                 同时为了保证名字一致性，采用你文件系统中的真实文件“第1章 电路基础.html” -->
+            <div class="note-item">
+                <a href="1.html" class="note-link">
+                    <span class="note-icon">🔌</span>
+                    <span class="note-title">第1章 电路基础 </span>
+                    <span class="note-arrow">→</span>
+                </a>
+            </div>
+            <!-- 如果你后续还会添加“第2章 正弦交流电路”或“第3章 动态电路”等，可自行添加更多条目 
+                 但目前根据要求，该类别下已有一个html文件，完美符合 -->
+        </div>
+    </div>
+
+    <!-- 硬件知识 分区：该类别下有两个html文件 -->
+    <div class="category">
+        <div class="category-header">
+            <h2>
+                🛠️ 硬件知识
+               
+            </h2>
+        </div>
+        <div class="note-list">
+            <!-- 硬件知识下的第一个文件：UART IIC SPI CAN.html -->
+            <div class="note-item">
+                <a href="UART%20IIC%20SPI%20CAN.html" class="note-link">
+                    <span class="note-icon">📡</span>
+                    <span class="note-title">UART  IIC  SPI  CAN</span>
+                    <span class="note-arrow">→</span>
+                </a>
+            </div>
+            <!-- 硬件知识下的第二个文件：FreeRTOS.html -->
+            <div class="note-item">
+                <a href="FreeRTOS.html" class="note-link">
+                    <span class="note-icon">⚙️</span>
+                    <span class="note-title">FreeRTOS 实时操作系统</span>
+                    <span class="note-arrow">→</span>
+                </a>
+            </div>
+            <!-- 未来如果需要扩展其他硬件笔记，比如“硬件设计规范”、“PCB布局”等，在此处继续添加即可 
+                 但严格按照要求，目前只显示现有的2个文件 -->
+        </div>
+    </div>
+
+    <!-- 快速备注：随着笔记增加，该页面将自动保持整洁，两个大类清楚区分 -->
+    <footer>
+        📂 笔记不断更新中 · 点击条目直达详细内容
+    </footer>
+</div>
 </body>
 </html>
+```
